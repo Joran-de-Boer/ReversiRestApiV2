@@ -11,8 +11,8 @@ using ReversiRestApiV2.DAL;
 namespace ReversiRestApiV2.Migrations
 {
     [DbContext(typeof(SpelContext))]
-    [Migration("20220604143041_V3")]
-    partial class V3
+    [Migration("20220612130917_v2")]
+    partial class v2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,10 @@ namespace ReversiRestApiV2.Migrations
             modelBuilder.Entity("ReversiRestApiV2.SpelJson", b =>
                 {
                     b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<int>("AandeBeurt")
                         .HasColumnType("int");

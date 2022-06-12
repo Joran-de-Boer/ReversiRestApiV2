@@ -24,7 +24,10 @@ namespace ReversiRestApiV2.Migrations
             modelBuilder.Entity("ReversiRestApiV2.SpelJson", b =>
                 {
                     b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<int>("AandeBeurt")
                         .HasColumnType("int");

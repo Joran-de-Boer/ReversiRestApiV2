@@ -6,7 +6,7 @@ namespace ReversiRestApiV2
 {
     public class SpelJson
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]       
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]       
         [Key]
         public int ID { get; set; }
         public string Omschrijving { get; set; }
