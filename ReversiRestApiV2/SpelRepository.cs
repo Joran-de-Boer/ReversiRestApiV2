@@ -1,4 +1,5 @@
 ﻿using ReversieISpelImplementatie.Model;
+using ReversiRestApiV2.Responses;
 
 namespace ReversiRestApiV2
 {
@@ -65,6 +66,31 @@ namespace ReversiRestApiV2
         public void ZetSpel(string spelToken, string spelerToken, ZetJson zet)
         {
             Spellen.Where(spel => spel.Token == spelToken).FirstOrDefault().DoeZet(spelerToken, zet);
+        }
+
+        public void JoinSpel(string spelToken, string spelerToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LeaveSpel(string spelToken, string spelerToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetGameState(string spelToken, string spelerToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        GameStateResponse ISpelRepository.GetGameState(string spelToken, string spelerToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Pass(string spelToken, string spelerToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

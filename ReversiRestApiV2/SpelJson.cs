@@ -47,6 +47,28 @@ namespace ReversiRestApiV2
             Spel temp = new Spel(this);
             temp.DoeZet(spelerToken, zet);
             this.Bord = BordConverter.ConvertBordToString(temp.Bord);
+            this.AandeBeurt = temp.AandeBeurt;
+        }
+
+        public bool IsAanDeBeurt(string spelerToken)
+        {
+            if(Speler1Token == spelerToken && AandeBeurt == Kleur.Wit) return true;
+            if (Speler2Token == spelerToken && AandeBeurt == Kleur.Zwart) return true;
+            return false;
+        }
+
+        public bool IsPlayerColor(Kleur kleur, string spelerToken)
+        {
+            if (Speler1Token == spelerToken && kleur == Kleur.Wit) return true;
+            if (Speler2Token== spelerToken && kleur == Kleur.Zwart) return true;
+            return false;
+        }
+
+        public Kleur GetPlayerColor(string spelerToken)
+        {
+            if(Speler1Token == spelerToken) return Kleur.Wit;
+            if (Speler2Token == spelerToken) return Kleur.Zwart;
+            return Kleur.Geen;
         }
     }
 }

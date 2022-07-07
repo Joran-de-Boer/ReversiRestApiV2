@@ -3,7 +3,7 @@ using System.Text;
 
 namespace ReversiRestApiV2
 {
-    public class BordConverter
+    public class BordConverter //8883WB33BW3888
     {
         public static string ConvertBordToString(Kleur[,] bord)
         {

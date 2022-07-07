@@ -79,7 +79,7 @@ namespace ReversieISpelImplementatie.Model
         public bool Afgelopen()     // return true als geen van de spelers een zet kan doen
         {
             //throw new NotImplementedException();    // todo!
-            return !IsErEenZetMogelijk(AandeBeurt);
+            return !(IsErEenZetMogelijk(AandeBeurt) || IsErEenZetMogelijk(GetKleurTegenstander(AandeBeurt)));
         }
 
         public Kleur OverwegendeKleur()
@@ -148,7 +148,7 @@ namespace ReversieISpelImplementatie.Model
                 return Kleur.Geen;
         }
 
-        private bool IsErEenZetMogelijk(Kleur kleur)
+        public bool IsErEenZetMogelijk(Kleur kleur)
         {
             if (kleur == Kleur.Geen)
                 throw new Exception("Kleur mag niet gelijk aan Geen zijn!");
@@ -287,9 +287,16 @@ namespace ReversieISpelImplementatie.Model
                 array[0, 1] = value[1];
                 return array;
             }
-            int length = array.GetLength(1);
+            int length = array.GetLength(0);
             int[,] array1 = new int[length + 1, 2];
-            array.CopyTo(array1, 0);
+
+            for (int i = 0; i < length; i++)
+            {
+                for (int ii = 0; ii < array.GetLength(1); ii++)
+                {
+                    array1[i, ii] = array[i, ii];
+                }
+            }
             array1[length, 0] = value[0];
             array1[length, 1] = value[1];
             return array1;

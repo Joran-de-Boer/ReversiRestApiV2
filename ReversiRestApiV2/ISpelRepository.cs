@@ -1,4 +1,5 @@
 ﻿using ReversieISpelImplementatie.Model;
+using ReversiRestApiV2.Responses;
 
 namespace ReversiRestApiV2
 {
@@ -15,5 +16,9 @@ namespace ReversiRestApiV2
 
         List<string> GetSpelOmschrijvingenVanSpellenMetWachtendeSpeler();
         void ZetSpel(string spelToken, string spelerToken, ZetJson zet);
+        void JoinSpel(string spelToken, string spelerToken);
+        void LeaveSpel(string spelToken, string spelerToken);
+        GameStateResponse GetGameState(string spelToken, string spelerToken);
+        void Pass(string spelToken, string spelerToken);
     }
 }

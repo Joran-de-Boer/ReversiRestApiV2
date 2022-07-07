@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ReversieISpelImplementatie.Model;
 using ReversiRestApiV2.Request;
+using ReversiRestApiV2.Responses;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -67,10 +68,28 @@ namespace ReversiRestApiV2.Controllers
             iRepository.AddSpel(spel);
         }
 
+        [HttpPut("Join")]
+        public void JoinSpel([FromBody] JoinSpelRequest request)
+        {
+            iRepository.JoinSpel(request.SpelId, request.SpelerId);
+        }
+
         [HttpPut("Zet")]
         public void PutZetSpel([FromBody] ZetSpelRequest request)
         {
             iRepository.ZetSpel(request.SpelToken, request.SpelerToken, request.Zet);
+        }
+
+        [HttpPost("Gamestate")]
+        public ActionResult<GameStateResponse> GetGameState([FromBody] GameStateRequest request)
+        {
+            return iRepository.GetGameState(request.SpelToken, request.SpelerToken);
+        }
+
+        [HttpPut("Pass")]
+        public void Pass([FromBody] PassRequest request)
+        {
+            iRepository.Pass(request.spelToken, request.spelerToken);
         }
 
         // ...
