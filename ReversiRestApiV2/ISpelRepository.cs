@@ -20,5 +20,6 @@ namespace ReversiRestApiV2
         void LeaveSpel(string spelToken, string spelerToken);
         GameStateResponse GetGameState(string spelToken, string spelerToken);
         void Pass(string spelToken, string spelerToken);
+        void Delete(string spelToken);
     }
 }

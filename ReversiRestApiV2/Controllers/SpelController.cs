@@ -92,6 +92,18 @@ namespace ReversiRestApiV2.Controllers
             iRepository.Pass(request.spelToken, request.spelerToken);
         }
 
+        [HttpDelete("Delete")]
+        public void Delete([FromBody] GameTokenRequest request)
+        {
+            iRepository.Delete(request.GameToken);
+        }
+
+        [HttpPut("Leave")]
+        public void Leave([FromBody] JoinSpelRequest request)
+        {
+            iRepository.LeaveSpel(request.SpelId, request.SpelerId);
+        }
+
         // ...
 
     }

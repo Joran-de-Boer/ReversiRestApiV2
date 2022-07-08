@@ -92,5 +92,10 @@ namespace ReversiRestApiV2
         {
             throw new NotImplementedException();
         }
+
+        public void Delete(string spelToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

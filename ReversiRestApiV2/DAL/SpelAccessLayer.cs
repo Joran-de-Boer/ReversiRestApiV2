@@ -42,9 +42,14 @@ namespace ReversiRestApiV2.DAL
             return GetSpellenWaiting().Select(spel => spel.Omschrijving).ToList();
         }
 
-        public Spel GetSpelPlayerToken(string spelerToken)
+        public Spel? GetSpelPlayerToken(string spelerToken)
         {
-            return new Spel(_spelContext.Spellen.Where(spel => spel.Speler1Token == spelerToken || spel.Speler2Token == spelerToken).FirstOrDefault());
+            SpelJson? spel = _spelContext.Spellen.Where(spel => spel.Speler1Token == spelerToken || spel.Speler2Token == spelerToken).FirstOrDefault();
+            if (spel != null)
+            {
+                return new Spel(_spelContext.Spellen.Where(spel => spel.Speler1Token == spelerToken || spel.Speler2Token == spelerToken).FirstOrDefault());
+            }
+            return null;
         }
 
         public void ZetSpel(string spelToken, string spelerToken, ZetJson zet)
@@ -115,6 +120,15 @@ namespace ReversiRestApiV2.DAL
                 }
             }
             _spelContext.SaveChanges();          
+        }
+
+        public void Delete(string spelToken)
+        {
+            SpelJson? spel = _spelContext.Spellen.Where(spel => spel.Token == spelToken).FirstOrDefault();
+            if (spel != null)
+            {
+                _spelContext.Spellen.Remove(spel);
+            }
         }
     }
 }
