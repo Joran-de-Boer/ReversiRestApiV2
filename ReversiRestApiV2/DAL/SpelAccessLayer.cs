@@ -29,6 +29,20 @@ namespace ReversiRestApiV2.DAL
 
         public List<Spel> GetSpellen()
         {
+            try
+            {
+                var toRemove = _spelContext.Spellen.Where(spel => spel.Speler1Token == null && spel.Speler2Token == null);
+                foreach (var item in toRemove)
+                {
+                    _spelContext.Spellen.Remove(item);
+                }
+                _spelContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
             return _spelContext.Spellen.Select(spel => new Spel(spel)).ToList();
         }
 

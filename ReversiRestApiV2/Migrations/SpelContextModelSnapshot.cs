@@ -41,7 +41,6 @@ namespace ReversiRestApiV2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Speler1Token")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Speler2Token")

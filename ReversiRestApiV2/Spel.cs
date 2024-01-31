@@ -126,7 +126,8 @@ namespace ReversieISpelImplementatie.Model
             int[,] mogelijkeZetten = returnMogelijkeZetten(rijZet, kolomZet);
             if (mogelijkeZetten == null)
             {
-                throw new Exception($"Zet ({rijZet},{kolomZet}) is niet mogelijk!");
+                //throw new Exception($"Zet ({rijZet},{kolomZet}) is niet mogelijk!");
+                return;
             }
             for (int i = 0; i < 8; i++)
             {

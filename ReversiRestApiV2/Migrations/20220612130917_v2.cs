@@ -16,7 +16,7 @@ namespace ReversiRestApiV2.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Omschrijving = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Token = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Speler1Token = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Speler1Token = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Speler2Token = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Bord = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AandeBeurt = table.Column<int>(type: "int", nullable: false)
